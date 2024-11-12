@@ -59,9 +59,9 @@
     <h1><?php echo "Who You Are?"; ?></h1>
     
     <div class="buttons-container">
-        <a href="employee.html" class="role-button">Employee</a>
-        <a href="manager.html" class="role-button">Manager</a>
-        <a href="developer.html" class="role-button">Developer</a>
+        <a href="employeeLogin.php" class="role-button">Employee</a>
+        <a href="managerLogin.php" class="role-button">Manager</a>
+        <a href="devLogin.php" class="role-button">Developer</a>
     </div>
 </body>
 </html>
