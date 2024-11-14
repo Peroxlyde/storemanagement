@@ -1,3 +1,8 @@
+
+<?php 
+include('connection.php');  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,6 +113,16 @@ button:hover {
         .back-button:hover {
             background-color: #374151;
         }
+        .error {
+          color: #f87171; /* Light red color for error text */
+          background-color: #fee2e2; /* Light red background */
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          margin-bottom: 1rem;
+          font-size: 0.875rem;
+          text-align: center;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+          }
 
     </style>
 </head>
@@ -118,8 +133,14 @@ button:hover {
       <div class="card">
         <span class="admin-badge">For Employee</span>
         <h1 class="title">Sign in</h1>
-
-        <form @submit.prevent="handleSubmit">
+        <?php
+            session_start();
+            if (isset($_SESSION['error'])) {
+                echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+                unset($_SESSION['error']); // Clear the error after displaying
+            }
+            ?>
+        <form @submit.prevent="handleSubmit" action="employeeLoginDB.php" method="POST">
           <div class="form-group">
             <label for="username">Enter your username</label>
             <input
@@ -142,8 +163,9 @@ button:hover {
             />
           </div>
 
-          <button type="submit">Sign in</button>
+          <button type="submit" name="login_em">Sign in</button>
         </form>
+
       </div>
     </div>
   </div>

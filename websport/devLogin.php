@@ -118,8 +118,14 @@ button:hover {
       <div class="card">
         <span class="admin-badge">For Developer</span>
         <h1 class="title">Sign in</h1>
-
-        <form @submit.prevent="handleSubmit">
+        <?php
+            session_start();
+            if (isset($_SESSION['error'])) {
+                echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+                unset($_SESSION['error']); // Clear the error after displaying
+            }
+            ?>
+        <form @submit.prevent="handleSubmit" action="devDB.php" method="POST">
           <div class="form-group">
             <label for="username">Enter your username</label>
             <input
