@@ -42,8 +42,9 @@
     transition: background-color 0.3s;
   }
 
-  .side-navbar a:focus {
+  .side-navbar a:focus, .side-navbar a.active {
     color: #0B63F8;
+    background-color: #e0e0e0;
   }
   .side-navbar a:hover {
     color:white;
@@ -82,7 +83,7 @@
   </div>
   <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center"> 
     <img src="warning-sign.png" style="width:25px;height:auto;">
-    <a href="manager_issue-report.php">Issued reports</a>
+    <a href="manager_issue-report.php">Issued report</a>
 </div>
 
   <div style="display: flex;margin-left:30px;gap:20px;margin-top:50px;align-items:center">
