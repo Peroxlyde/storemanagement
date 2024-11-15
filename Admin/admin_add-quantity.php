@@ -42,8 +42,9 @@
     transition: background-color 0.3s;
   }
 
-  .side-navbar a:focus {
+  .side-navbar a:focus, .side-navbar a.active{
     color: #0B63F8;
+    background-color: #e0e0e0;
   }
   .side-navbar a:hover {
     color:white;

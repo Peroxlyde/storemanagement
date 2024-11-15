@@ -1,3 +1,35 @@
+<?php
+// Enable error reporting for debugging (Remove in production)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Database connection details
+$servername = "localhost";      // Change if not using localhost
+$username = "root";             // Replace with your database username
+$password = "root";             // Replace with your database password
+$database = "velotica_inventory"; // Replace with your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to fetch data
+$sql = "SELECT * FROM issue";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velotica Admin</title>
+<link rel="icon" type="image/png" sizes="16x16" href="/velo-favicon.png" ></link>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +74,9 @@
     transition: background-color 0.3s;
   }
 
-  .side-navbar a:focus {
+  .side-navbar a:focus, .side-navbar a.active{
     color: #0B63F8;
+    background-color: #e0e0e0;
   }
   .side-navbar a:hover {
     color:white;
@@ -65,10 +98,37 @@
   }
   .main-content h1{
     margin-top:100px;
+    margin-bottom: 20px;
     margin-left:50px;
   }
   .side-navbar a.active {
         color: #0B63F8;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+
+  td {
+    font-size: small;
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: small;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
   }
 </style>
 </head>
@@ -108,6 +168,45 @@
 
 <div class="main-content">
   <h1>Issue items</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Issue ID</th>
+        <th>Product ID</th>
+        <th>Admin ID</th>
+        <th>Date</th>
+        <th>Quantity</th>
+        <th>Status</th>
+        <th>Approve By</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        if ($result->num_rows > 0) {
+          // Output data of each row
+          while ($row = $result->fetch_assoc()) {
+            $IssueID = $row['IssueID'];
+              echo "<tr>
+                    <td>{$row['IssueID']}</td>
+                    <td>{$row['ProductID']}</td>
+                    <td>{$row['adminID']}</td>
+                    <td>{$row['date']}</td>
+                    <td>{$row['quantity']}</td>
+                    <td>{$row['status']}</td>
+                    <td>{$row['approveBy']}</td>
+                    <td>
+                        <a href='del_product.php?id={$IssueID}'><img src='bin.png' alt='Delete' style='width:20px;height:auto;'></a>
+                    </td>
+                    </tr>";
+                    }
+          } 
+          else {
+            echo "<tr><td colspan='8'>No products found</td></tr>";
+          }
+      ?>
+    </tbody>
+ </table>
 </div>
 
 
