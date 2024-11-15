@@ -218,7 +218,6 @@ $result = $conn->query($sql);
                                 <td>{$row['createBy']}</td>
                                 <td>{$row['locationID']}</td>
                                 <td>
-                                  <a href='edit_product.php?id={$productID}'><img src='edit.png' alt='Edit' style='width:20px;height:auto;margin-right:10px'></a>
                                   <a href='del_product.php?id={$productID}'><img src='bin.png'  alt='Delete' style='width:20px;height:auto;'></a>
                                 </td>
                               </tr>";
