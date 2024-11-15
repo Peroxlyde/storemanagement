@@ -97,7 +97,7 @@ $result = $conn->query($sql);
   .side-navbar a.active {
         color: #0B63F8;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -162,6 +162,8 @@ $result = $conn->query($sql);
             <th>Admin ID</th>
             <th>Date</th>
             <th>Quantity</th>
+            <th>Status</th>
+            <th>Approve By</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -177,6 +179,8 @@ $result = $conn->query($sql);
                 <td>฿{$row['adminID']}</td>
                 <td>{$row['date']}</td>
                 <td>{$row['quantity']}</td>
+                <td>{$row['status']}</td>
+                <td>{$row['approveBy']}</td>
                 <td>
                     <a href='del_product.php?id={$IssueID}'><img src='bin.png'  alt='Delete' style='width:20px;height:auto;'></a>
                 </td>
