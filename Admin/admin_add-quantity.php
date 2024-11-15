@@ -67,6 +67,9 @@
     margin-top:100px;
     margin-left:50px;
   }
+  .side-navbar a.active {
+        color: #0B63F8;
+  }
 </style>
 </head>
 <body>
@@ -89,7 +92,7 @@
 
   <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center"> 
     <img src="quantity.png" style="width:25px;height:auto;">
-    <a href="admin_add-quantity.php">Add quantity</a>
+    <a href="admin_add-quantity.php" class="active">Add quantity</a>
   </div>
 
   <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center"> 
@@ -103,9 +106,8 @@
   </div>
 </div>
 
-
 <div class="main-content">
-  <h1>Welcome to Admin Page</h1>
+  <h1>Add quantity</h1>
 </div>
 
 

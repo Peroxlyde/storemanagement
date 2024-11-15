@@ -91,11 +91,16 @@
   </div>
 
   <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center"> 
+    <img src="quantity.png" style="width:25px;height:auto;">
+    <a href="admin_add-quantity.php">Add quantity</a>
+  </div>
+
+  <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center"> 
     <img src="warning-sign.png" style="width:25px;height:auto;">
     <a href="admin_issue.php" class="active">Issue items</a>
   </div>
 
-  <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center; margin-top: 350px;">
+  <div style="display:flex;margin-left:29px;gap:20px;margin-top:50px; align-items:center; margin-top: 274px;">
     <img src="log-out.png" style="width:25px;height:auto;">
     <a href="#">Log out</a>
   </div>
