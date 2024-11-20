@@ -71,6 +71,34 @@
   .side-navbar a.active {
         color: #0B63F8;
   }
+
+  label {
+  display: block;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  }
+
+  input, button {
+  border: 1px solid #4b5563;
+  border-radius: 4px;
+  height: 30px;
+  line-height: 30 px;
+  padding-left: 5px;
+  }
+  
+  input:focus, button:focus {
+  border-color: black;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+ }
+
+ .form {
+  width: 50%;
+  margin-top: 20px;
+  margin-left: 50px;
+ }
+
+
 </style>
 </head>
 <body>
@@ -100,6 +128,15 @@
 
 <div class="main-content">
   <h1>Send a request</h1>
+  <form action="request_handling.php" class="form" method="get"> 
+    <div>
+      <label for="request">Request to Dev:</label>
+      <textarea row ="5" col ="60" name="request" style="width:298px; height: 216px; border-radius: 4px; padding-inline-start: 5px; padding:5px;"></textarea><br><br>
+    </div>
+    <div style="margin-top:20px;">
+        <input type="submit" style="color: white;background-color: black;padding-left: 60px;padding-right: 60px;">
+    </div>
+  </form>
 </div>
 </body>
 </html>
