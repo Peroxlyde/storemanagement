@@ -6,7 +6,6 @@
 <title>Velotica Admin</title>
 <link rel="icon" type="image/png" sizes="16x16" href="/velo-favicon.png" ></link>
 <style>
-  /* Reset */
   * {
     margin: 0;
     padding: 0;
@@ -20,7 +19,6 @@
     height: 729.6px;
   }
 
-  /* Side Navbar */
   .side-navbar {
     width: 250px;
     height: 100vh;
@@ -57,7 +55,6 @@
     text-align: center;
   }
 
-  /* Main Content */
   .main-content {
     margin-left: 250px;
     height: 100%;
@@ -103,7 +100,6 @@
     <a href="#">Log out</a>
   </div>
 </div>
-
 
 <div class="main-content">
   <h1>Welcome to Admin Page</h1>

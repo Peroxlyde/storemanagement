@@ -1,3 +1,27 @@
+<?php
+// Enable error reporting for debugging (Remove in production)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Database connection details
+$servername = "localhost";      // Change if not using localhost
+$username = "root";             // Replace with your database username
+$password = "root";             // Replace with your database password
+$database = "velotica_inventory"; // Replace with your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to fetch data
+$sql = "SELECT ProductID, productName FROM product";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +30,6 @@
 <title>Velotica Admin</title>
 <link rel="icon" type="image/png" sizes="16x16" href="/velo-favicon.png" ></link>
 <style>
-  /* Reset */
   * {
     margin: 0;
     padding: 0;
@@ -20,7 +43,6 @@
     height: 729.6px;
   }
 
-  /* Side Navbar */
   .side-navbar {
     width: 250px;
     height: 100vh;
@@ -57,7 +79,6 @@
     text-align: center;
   }
 
-  /* Main Content */
   .main-content {
     margin-left: 250px;
     height: 100%;
@@ -71,6 +92,44 @@
   .side-navbar a.active {
         color: #0B63F8;
   }
+
+  label {
+  display: block;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  }
+
+  input, button {
+  border: 1px solid #4b5563;
+  border-radius: 4px;
+  height: 30px;
+  line-height: 30 px;
+  padding-left: 5px;
+  }
+  
+  input:focus, button:focus {
+  border-color: black;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+ }
+
+ .form {
+  width: 50%;
+  margin-top: 20px;
+  margin-left: 50px;
+ }
+
+ select {
+  border: 1px solid #4b5563;
+  width: 169px;
+  border-radius: 4px;
+  width: 500px;
+  height: 30px;
+  line-height: 30 px;
+  padding-left: 5px;
+  padding-right: 5px;
+ }
+
 </style>
 </head>
 <body>
@@ -109,8 +168,33 @@
 
 <div class="main-content">
   <h1>Add quantity</h1>
+  <form action= "quantity_handling.php" class="form" method="get">
+    <div>
+      <label for="productid">Product:</label>
+      <select type="text" id="productid" name="productid">
+        <?php 
+          $result = $conn->query($sql);
+
+          if($result-> num_rows > 0){
+          while($row = $result -> fetch_assoc()){
+            echo "<option value ='".$row['ProductID']."'>".$row['ProductID'].' - '.$row['productName']."</option>";
+          }
+        } else {
+          echo "<option>No product available.</option>";
+        }
+
+        $conn->close();
+        ?>
+      </select><br><br>
+    </div>
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="text" id="quantity" name="quantity"><br><br>
+    </div>
+    <div style="margin-top:50px;">
+      <input type="submit" style="color: white;background-color: black;padding-left: 60px;padding-right: 60px;">
+    </div>
+  </form>
 </div>
-
-
 </body>
 </html>

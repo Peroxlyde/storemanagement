@@ -114,6 +114,7 @@ $result = $conn->query($sql);
 
         td {
           font-size: small;
+          text-align: center;
         }
 
         th {
