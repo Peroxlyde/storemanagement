@@ -20,9 +20,10 @@ include('connection.php');
         $count = mysqli_num_rows($result); 
         // Check if there is exactly one match
         if ( $count == 1) {
+            $_SESSION['managerID'] = $row['managerID'];
             //$_SESSION['success'] = "You are now logged in";
             //echo "<h1><center> Login successful </center></h1>";  
-            header("Location: managerDash.php");
+            header("Location: Manager/manager_page.php");
             
         } else {
             $_SESSION['error'] = "Invalid username or password";

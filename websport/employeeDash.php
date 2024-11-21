@@ -1,25 +1,15 @@
 <?php
-// adminLogin.php
+session_start();
 
-// Database connection
-$conn = new mysqli('localhost', 'root', 'root', 'inventorymanagement');
-if($conn->connect_errno){
-    echo $conn->connect_errno.":".$conn->connect_error;
+if (!isset($_SESSION['adminID'])) {
+    // Redirect to login page if adminID is not set
+    header("Location: employeeLogin.php");
+    exit();
 }
-$q="select * from admin";
-if ($result = $conn->query($q)){
-    echo '<table border = "1">';
-    while($row = $result->fetch_array()){
-        echo '<tr>';
-        echo '<td>'.$row['adminID'].'</td>';
-        echo '<td>'.$row['aUsername'].'</td>';
-        echo '<td>'.$row['aPassword'].'</td>';
-        echo '<td>'.$row['aName'].'</td>';
-        echo '</tr>';
-    }
-    echo '</table>';
-    $result->free();
-}else{echo 'retiveal failed:'.$conn->error;}
 
+// Use adminID
+$adminID = $_SESSION['adminID'];
+echo "Welcome, Admin ID: " . $adminID;
+
+// Add more functionality here as needed
 ?>
-

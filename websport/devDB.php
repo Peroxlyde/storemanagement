@@ -20,9 +20,10 @@ include('connection.php');
         $count = mysqli_num_rows($result); 
         // Check if there is exactly one match
         if ( $count == 1) {
+            $_SESSION['dID'] = $row['dID'];
             //$_SESSION['success'] = "You are now logged in";
             //echo "<h1><center> Login successful </center></h1>";  
-            header("Location: devDash.php");
+            header("Location: Dev/dev_page.php");
             
         } else {
             $_SESSION['error'] = "Invalid username or password";
