@@ -33,70 +33,121 @@ $result = $conn->query($sql);
     <style>
         /* Reset */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            min-height: 100vh; /* Use min-height for responsiveness */
-        }
+html, body {
+  height: 100%;
+}
 
-        /* Side Navbar */
-        .side-navbar {
-            width: 250px;
-            background-color: white;
-            color: #808080;
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 20px;
-            height: 100vh;
-        }
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
 
-        .side-navbar a {
-            text-decoration: none;
-            color: #808080;
-            display: block;
-            font-size: 18px;
-            transition: background-color 0.3s, color 0.3s;
-            border-radius: 4px;
-        }
+/* Sidebar Styling */
+.side-navbar {
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  color: #808080;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+  z-index: 1000;
+}
 
-        .side-navbar a:focus, .side-navbar a.active {
-            color: #0B63F8;
-            background-color: #e0e0e0; 
-        }
+.side-navbar .logo {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-        .side-navbar a:hover {
-            color: white;
-            background-color: #0B63F8;
-        }
+.side-navbar .logo img {
+  width: 200px;
+  height: auto;
+}
 
-        .side-navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            padding: 20px;
-            text-align: center;
-        }
+/* Navigation Links */
+.side-navbar a {
+  text-decoration: none;
+  color: #808080;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            flex-grow: 1;
-            background-color: #f4f4f4;
-        }
+.side-navbar a:hover {
+  color: white;
+  background-color: #0B63F8;
+}
 
-        .main-content h1 {
-            margin-bottom: 20px;
-            margin-top: 80px;
-            margin-left: 40px;
-        }
+.side-navbar a.active {
+  color: #0B63F8;
+  background-color: #e0e0e0;
+}
+
+/* Navigation Items Styling */
+.side-navbar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icon and text */
+  margin-bottom: 30px; /* Space between links */
+  padding-left: 20px; /* Align links */
+}
+
+.side-navbar .nav-item img {
+  width: 25px;
+  height: auto;
+}
+
+/* Main Content Styling */
+.main-content {
+  margin-top:100px;
+  margin-left: 250px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.main-content h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .side-navbar {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .side-navbar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
 
         /* Table Styles */
         table {
@@ -127,57 +178,42 @@ $result = $conn->query($sql);
             background-color: #f1f1f1;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            .side-navbar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <div class="side-navbar">
-        <div class="logo">
-            <a href="admin_page.php">
-                <img src="velotica-2.png" alt="Velotica Logo" style="width:220px;height:auto;">
-            </a>
-        </div>
+<div class="side-navbar">
+  <div class="logo">
+    <a href="admin_page.php">
+      <img src="velotica-2.png" alt="Velotica Logo">
+    </a>
+  </div>
 
-        <div style="display: flex; margin-left: 30px; gap: 20px; margin-top: 50px; align-items: center;">
-            <img src="windows-8.png" alt="Icon" style="width:20px;height:auto;">
-            <a href="admin_product-list.php" class="active">Product list</a>
-        </div>
-        <div style="display:flex; margin-left:29px; gap:20px; margin-top:50px; align-items:center;"> 
-            <img src="task.png" alt="Icon" style="width:25px;height:auto;">
-            <a href="admin_add-product.php">Add product</a>
-        </div>
+  <div class="nav-item">
+    <img src="windows-8.png" alt="Product List Icon">
+    <a href="admin_product-list.php">Product List</a>
+  </div>
 
-        <div style="display:flex; margin-left:29px; gap:20px; margin-top:50px; align-items:center;"> 
-            <img src="quantity.png" alt="Icon" style="width:25px;height:auto;">
-            <a href="admin_add-quantity.php">Add quantity</a>
-        </div>
+  <div class="nav-item">
+    <img src="task.png" alt="Add Product Icon">
+    <a href="admin_add-product.php">Add Product</a>
+  </div>
 
-        <div style="display:flex; margin-left:29px; gap:20px; margin-top:50px; align-items:center;"> 
-            <img src="warning-sign.png" alt="Icon" style="width:25px;height:auto;">
-            <a href="admin_issue.php">Issue items</a>
-        </div>
+  <div class="nav-item">
+    <img src="quantity.png" alt="Add Quantity Icon">
+    <a href="admin_add-quantity.php">Add Quantity</a>
+  </div>
 
-        <div style="display:flex; margin-left:29px; gap:20px; margin-top:50px; align-items:center; margin-top: 274px;">
-            <img src="log-out.png" alt="Icon" style="width:25px;height:auto;">
-            <a href="#">Log out</a>
-        </div>
-    </div>
+  <div class="nav-item">
+    <img src="warning-sign.png" alt="Issue Items Icon">
+    <a href="admin_issue.php">Issue Items</a>
+  </div>
+
+  <div class="nav-item" style="margin-top: auto;"> <!-- Push logout to the bottom -->
+    <img src="log-out.png" alt="Log Out Icon">
+    <a href="#">Log Out</a>
+  </div>
+</div>
 
     <div class="main-content">
         <h1>Product list</h1>
