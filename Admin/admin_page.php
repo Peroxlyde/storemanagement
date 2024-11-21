@@ -15,8 +15,9 @@
   body {
     font-family: Arial, sans-serif;
     display: flex;
-    width: 1535.2px;
-    height: 729.6px;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #f4f4f4;
   }
 
   .side-navbar {
@@ -58,6 +59,9 @@
   .main-content {
     margin-left: 250px;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
     background-color: #f4f4f4;
   }
@@ -65,6 +69,27 @@
     margin-top:100px;
     margin-left:50px;
   }
+
+  @media (max-width: 768px){
+    .side-navbar{
+      width: 200px;
+    }
+    .main-content {
+      margin-left: 200px;
+    }
+  }
+
+  @media (max-width: 576px){
+    .side-navbar{
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
 </style>
 </head>
 <body>
