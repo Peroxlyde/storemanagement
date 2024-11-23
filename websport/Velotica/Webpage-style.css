@@ -1,0 +1,307 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+}
+
+.abovenav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f0f0f0;
+    margin-top: 0;
+    padding-top: 0;
+    height: 50px;
+}
+.nav_location li:not(:last-child) {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right:  2px solid;
+  }
+
+.nav_location li :hover {
+    text-decoration: underline;
+}
+
+/* Nav bar */
+nav ul{
+    list-style: none;    
+    display: flex;
+    justify-content: center;
+}
+nav li {
+    margin-right: 40px;
+}
+nav a {
+    text-decoration: none;
+    color: Black;
+    font-family: 'Inter';
+    font-weight: bold;
+}
+
+.navbar{
+    display: flex;
+    position: sticky; 
+    justify-content:space-between;
+    background-color: #fff;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    transition: height 0.3s ease;
+}
+
+/*
+.navbar:hover{
+    height: 100px;
+    transition-delay: 0.3s;
+}*/
+
+.navbar ul li :hover{
+    text-decoration: underline;
+}
+
+.navbar img{
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 40px;
+}
+header {
+    background-color: white;
+}
+
+/* Center page */
+.centerpage{
+    display: flex;
+    justify-content: center;
+}
+
+.centerpage h1 a {
+    text-decoration: none; 
+    color: Black; 
+}
+.centerpage h1 :hover {
+    color: white;
+    background-color: black;
+}
+
+.promotion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    text-align: center;
+    height: 100px;
+}
+
+.promotion p {
+    font-family: 'Inter';
+}
+
+.promotion a {
+    color: Black;
+    font-family: 'Inter';
+    font-weight: 200;
+}
+
+.poster {
+    justify-items: center;
+}
+
+.poster img {
+    width: 100%;
+}
+
+.poster h1{
+    align-items: center;
+    font-family: 'Inter';
+    font-weight:1000px;
+    font-size: 80px;
+}
+
+.poster h3{
+    align-items: center;
+    font-family: 'Inter';
+
+}
+
+.poster p {
+    font-family: 'Inter';
+}
+
+.placeholder-video {
+    width: 100%;
+    min-height: 68vh; /* Match the height of the video section on the first page */
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    visibility: hidden;
+    z-index: 0;
+}
+
+.placeholder-product {
+    width: 300px;
+    height: 410.63px;
+    visibility: hidden;
+    z-index: 0;
+}
+
+.search input {
+    background-color: #f0f0f0;
+    background-image: url("https://static.thenounproject.com/png/2946467-200.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: left center;
+    width: 100%;
+    max-width: 200px;
+    font-size: 15px;
+    padding: 8px 8px 8px 25px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.search{
+    margin-top: 10px;
+    margin-right: 37.2px;
+}
+.search :hover {
+    background-color: #ddd;
+    
+}
+.search :focus {
+    position: absolute;
+    left: 50%;
+    padding: 8px 8px 8px 25px;
+    max-width: 500px;
+    transform: translate(-50%,-50%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.search-container:focus-within .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+.search-placeholder{
+    width: 255px;
+    height: 60px;
+    visibility: hidden;
+}
+
+.brands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 90px;
+    margin-bottom: 100px;
+}
+.brands img {
+    max-width: 80px;
+    height: auto;
+}
+
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+.items h3 {
+    margin-left: 80px;
+    font-family: 'Inter';
+} 
+.image-container{
+    display: grid; 
+    position: relative;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.image-card {
+    position: relative;
+    width: 300px;
+    height: 412 px;
+    text-align: center;
+}
+
+.image-card img {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+.text-overlay{
+    position: absolute;
+    bottom: 20px;
+    transform: translateX(-50%);
+    margin-left: 50px;
+    color: black;
+    background-color: white;
+    border-color: black;
+    font-family: inter;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+    border-radius: 2%;
+}
+
+.category-tab {
+    display: flex;
+    justify-items: center;
+    margin-right: 40px;
+    margin-bottom: 50px;
+}
+
+.category-tab ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.category-tab li{
+    text-decoration: none;
+    color: black;
+    font-family: inter;
+    font-weight: bold;
+    border-top: black;
+}
+.category-tab li button {
+    padding: 10px 50px;
+    background-color: #f0f0f0;
+    border: 0.5px solid black; 
+    font-family: inter;
+    cursor: pointer;
+
+}
+.category-tab li:first-child button  {
+    border-radius: 4px 0 0 4px;
+}
+.category-tab li:last-child button {
+    border-radius: 0 4px 4px 0;
+}
+
+.category-tab :focus {
+    color:#ddd;
+    background-color: black;
+}
+
+/*.category-tab li button:focus {
+    scroll-behavior: smooth;
+}*/ 
