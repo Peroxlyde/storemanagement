@@ -24,7 +24,7 @@ $sql = "SELECT product.productName, product.price, product.image, product.quanti
             <div class = "abovenav">
                 <ul class = "nav_location" style="margin-right: 40px">
                     <li><a href="store_map.php">Store map</a></li>
-                    <li><a href=#>Help</a></li>
+                    <li><a href="help.php">Help</a></li>
                 </ul>
             </div> 
             <div class = "navbar">

@@ -1,13 +1,3 @@
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-include('../connection.php'); 
-
-$sql = "SELECT product.productName, product.price, product.image, product.quantity, location.Zone, product.locationID FROM product join location on product.locationID = location.locationID Where product.supplierID IN (SELECT supplierID FROM supplier WHERE supplierName like '%Adidas%')";
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,48 +43,21 @@ $sql = "SELECT product.productName, product.price, product.image, product.quanti
         </div>
     </header>
     <div class="centerpage">
-        <div>
-            <div>
-                <h1 style="text-align: center; margin-top: 80px;"><a href="main.php">Home</a>/Adidas</h1>
-            </div>
-            <div>    
-            <?php 
-                $result = $conn->query($sql);
-
-                if($result-> num_rows > 0){
-                    echo '<div style="display: grid; grid-template-columns: repeat(4,1fr); margin-left: 50px; gap:20px; margin-top: 100px; padding: 5px;z-index: 1;">';
-                    while($row = $result -> fetch_assoc()){
-                        echo '<div style="width: 300px" >';
-                        echo '<img src ="' .$row['image'].'"'. 'style ="width: 100%; height: 310px;">'; 
-                        echo '<h3>'.$row['productName']. '</h3>';
-                        echo '<p>฿'.$row['price']. '</[p>';
-                        echo '<a href="zone.php?id='.$row['locationID'].'" style ="text-decoration: none; color: black;"><p style="color: black;">Zone'.' '.$row['Zone']. '<img src="external-link.png" style="height:16px;width:16px;margin-left: 5px;"></p><a>';
-                         if ($row['quantity'] != 0){
-                            echo '<p style="color: green;">In stock</p>';
-                        }
-                        else{
-                            echo '<p style="color: red;">Out of stock</p>';
-                        }
-                        echo '</div>';
-                    }
-                    echo'</div>';
-                } 
-                else {
-                    echo "No product found.";
-                    echo '<div class="placeholder-video"></div>';
-                }
-            $conn->close();
-            ?>
-            </div>
+        <div style="text-align: center;">    
+            <h1 style="text-align: center; margin-top: 80px;"><a href="main.php">Home</a>/Help services</h1>
+            <h3 style="text-align: center; margin-top: 80px;">How to find product directory?</h3>
+            <img src="poster/help-section.jpg" widtd="100%" height="auto">
+            <p style="text-align: center; margin-top: 80px;">By Clicking Zone label and it will show the directory of selected product.</p>
         </div>
     </div>
     </section>
+    <section>
     <footer>
         <div style="background-color: black; width: 100%; height: 200px; margin-top: 50px;color: white;">
             <br><br><br><br><br>
             <p>© 2024 Velotica, Inc. All right reserved.</p>
         </div>
-    </footer>  
+    </footer>    
      
 </body>
 
