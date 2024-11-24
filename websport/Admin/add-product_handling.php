@@ -34,7 +34,7 @@
 
     if ($conn->query($sql) === TRUE) {
       echo "Product added successfully!";
-      header("Location: admin_page.php");
+      header("Location: admin_product-list.php");
       exit; // Prevent further script execution after redirect
     } else {
       echo "Error: " . $conn->error;

@@ -4,8 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include('../connection.php');  
-
-$sql = "SELECT ProductID, productName FROM product";
+session_start();
+// SQL query to fetch data
+$sql = "SELECT * FROM issue";
+$result = $conn->query($sql);
+$sql2 = "SELECT ProductID, productName FROM product";
 ?>
 
 <!DOCTYPE html>
@@ -127,6 +130,34 @@ $sql = "SELECT ProductID, productName FROM product";
   padding-right: 50px;
  }
 
+ table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+
+  td {
+    font-size: small;
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: small;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
 </style>
 </head>
 <body>
@@ -170,10 +201,10 @@ $sql = "SELECT ProductID, productName FROM product";
       <label for="productid">Product:</label>
       <select type="text" id="productid" name="productid">
         <?php 
-          $result = $conn->query($sql);
+          $result2 = $conn->query($sql2);
 
-          if($result-> num_rows > 0){
-          while($row = $result -> fetch_assoc()){
+          if($result2-> num_rows > 0){
+          while($row = $result2 -> fetch_assoc()){
             echo "<option value ='".$row['ProductID']."'>".$row['ProductID'].' - '.$row['productName']."</option>";
           }
         } else {
@@ -189,10 +220,46 @@ $sql = "SELECT ProductID, productName FROM product";
       <input type="text" id="quantity" name="quantity"><br><br>
     </div>
     
-    <div style="margin-top:40px;">
+    <div style="margin-top:40px; margin-bottom: 40px;">
         <input type="submit" style="color: white;background-color: black;padding-left: 60px;padding-right: 60px;">
     </div>
   </form>
+  <table>
+    <thead>
+        <tr>
+            <th>Issue ID</th>
+            <th>Product ID</th>
+            <th>Admin ID</th>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Approve By</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+          if ($result->num_rows > 0) {
+             // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+              $IssueID = $row['IssueID'];
+                echo "<tr>  
+                <td>{$row['IssueID']}</td>
+                <td>{$row['ProductID']}</td>
+                <td>{$row['adminID']}</td>
+                <td>{$row['date']}</td>
+                <td>{$row['quantity']}</td>
+                <td>{$row['status']}</td>
+                <td>{$row['approveBy']}</td>
+                </tr>";
+                }
+          } 
+          else {
+              echo "<tr><td colspan='9'>No product found</td></tr>";
+          }
+        ?>
+    </tbody>
+ </table>
 </div>
+
 </body>
 </html>
